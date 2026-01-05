@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   test:
@@ -28,11 +28,7 @@ jobs:
 
     - name: Run main script with env var
       env:
-        TEST_NUMBER: ${{ vars.TEST_NUMBER || '42' }}
+        TEST_NUMBER: ${{ vars.TEST_NUMBER }}
       run: python main.py
 
-    - name: Display GitHub environment variables
-      run: |
-        echo "Repository: $GITHUB_REPOSITORY"
-        echo "Run ID: $GITHUB_RUN_ID"
-        echo "SHA: $GITHUB_SHA"
+    
